@@ -1,6 +1,9 @@
 class Rider < ApplicationRecord
   # Direct associations
 
+  has_many   :trips,
+             :dependent => :destroy
+
   # Indirect associations
 
   # Validations

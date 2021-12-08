@@ -3,6 +3,8 @@ class Trip < ApplicationRecord
 
   # Direct associations
 
+  belongs_to :rider
+
   # Indirect associations
 
   # Validations

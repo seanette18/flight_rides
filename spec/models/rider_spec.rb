@@ -4,6 +4,8 @@ RSpec.describe Rider, type: :model do
   
     describe "Direct Associations" do
 
+    it { should have_many(:trips) }
+
     end
 
     describe "InDirect Associations" do

@@ -7,6 +7,9 @@ class LocationResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :trips,
+             foreign_key: :dropoff_location_id
+
   # Indirect associations
 
 end

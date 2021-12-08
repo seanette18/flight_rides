@@ -11,6 +11,9 @@ class TripResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :dropoff_location,
+             resource: LocationResource
+
   belongs_to :rider
 
   # Indirect associations

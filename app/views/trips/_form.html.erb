@@ -16,7 +16,7 @@
 
     <%= f.label :rider_id %>
     <!-- Input for rider_id start -->
-    <%= f.number_field :rider_id, class: rider_class, placeholder: "Enter rider" %>
+    <%= f.collection_select :rider_id, Rider.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for rider_id end -->
     <% if rider_was_invalid %>
       <% trip.errors.full_messages_for(:rider).each do |message| %>

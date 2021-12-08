@@ -7,6 +7,10 @@ class LocationResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :pickups,
+             resource: TripResource,
+             foreign_key: :pickup_location_id
+
   has_many   :trips,
              foreign_key: :dropoff_location_id
 

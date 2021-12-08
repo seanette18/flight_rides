@@ -1,27 +1,22 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: %i[show edit update destroy]
 
-  # GET /locations
   def index
     @q = Location.ransack(params[:q])
     @locations = @q.result(distinct: true).includes(:trips,
                                                     :pickups).page(params[:page]).per(10)
   end
 
-  # GET /locations/1
   def show
     @trip = Trip.new
   end
 
-  # GET /locations/new
   def new
     @location = Location.new
   end
 
-  # GET /locations/1/edit
   def edit; end
 
-  # POST /locations
   def create
     @location = Location.new(location_params)
 
@@ -32,7 +27,6 @@ class LocationsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /locations/1
   def update
     if @location.update(location_params)
       redirect_to @location, notice: "Location was successfully updated."
@@ -41,7 +35,6 @@ class LocationsController < ApplicationController
     end
   end
 
-  # DELETE /locations/1
   def destroy
     @location.destroy
     redirect_to locations_url, notice: "Location was successfully destroyed."
@@ -49,12 +42,10 @@ class LocationsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_location
     @location = Location.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def location_params
     params.require(:location).permit(:name_of_location, :address)
   end

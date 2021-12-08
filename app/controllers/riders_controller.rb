@@ -8,6 +8,7 @@ class RidersController < ApplicationController
 
   # GET /riders/1
   def show
+    @trip = Trip.new
   end
 
   # GET /riders/new

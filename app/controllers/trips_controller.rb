@@ -24,7 +24,12 @@ class TripsController < ApplicationController
     @trip = Trip.new(trip_params)
 
     if @trip.save
-      redirect_to @trip, notice: 'Trip was successfully created.'
+      message = 'Trip was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @trip, notice: message
+      end
     else
       render :new
     end

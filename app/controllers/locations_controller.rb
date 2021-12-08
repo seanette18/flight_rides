@@ -8,6 +8,7 @@ class LocationsController < ApplicationController
 
   # GET /locations/1
   def show
+    @trip = Trip.new
   end
 
   # GET /locations/new

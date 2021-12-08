@@ -42,7 +42,7 @@
 
     <%= f.label :dropoff_location_id %>
     <!-- Input for dropoff_location_id start -->
-    <%= f.number_field :dropoff_location_id, class: dropoff_location_class, placeholder: "Enter dropoff location" %>
+    <%= f.collection_select :dropoff_location_id, Location.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for dropoff_location_id end -->
     <% if dropoff_location_was_invalid %>
       <% trip.errors.full_messages_for(:dropoff_location).each do |message| %>

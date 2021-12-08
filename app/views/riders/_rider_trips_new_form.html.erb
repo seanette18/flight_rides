@@ -13,7 +13,7 @@
     <%= f.label :dropoff_location_id %>
 
     <!-- Input for dropoff_location_id start -->
-    <%= f.text_field :dropoff_location_id, class: "form-control" %>
+    <%= f.collection_select :dropoff_location_id, Location.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for dropoff_location_id end -->
   </div>
   <!-- Label and input for dropoff_location_id end -->

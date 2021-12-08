@@ -7,17 +7,29 @@
     <dl class="mb-1">
       <dt>Rider</dt>
       <!-- Display rider_id start -->
-      <dd><%= trip.rider_id %></dd>
+      <dd>
+        <% if @trip.rider.present? %>
+          <%= link_to trip.rider, trip.rider %>
+        <% end %>
+      </dd>
       <!-- Display rider_id end -->
 
       <dt>Dropoff location</dt>
       <!-- Display dropoff_location_id start -->
-      <dd><%= trip.dropoff_location_id %></dd>
+      <dd>
+        <% if @trip.dropoff_location.present? %>
+          <%= link_to trip.dropoff_location, trip.dropoff_location %>
+        <% end %>
+      </dd>
       <!-- Display dropoff_location_id end -->
 
       <dt>Pickup location</dt>
       <!-- Display pickup_location_id start -->
-      <dd><%= trip.pickup_location_id %></dd>
+      <dd>
+        <% if @trip.pickup_location.present? %>
+          <%= link_to trip.pickup_location, trip.pickup_location %>
+        <% end %>
+      </dd>
       <!-- Display pickup_location_id end -->
 
       <dt>Desired departure time</dt>

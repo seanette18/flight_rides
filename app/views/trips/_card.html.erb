@@ -44,16 +44,20 @@
 
       <!-- Edit link trip start -->
       <div class="col">
-        <%= link_to edit_trip_url(trip), class: "btn btn-block btn-outline-secondary" do %>
-          <i class="fas fa-edit"></i>
+        <% if current_rider == @trip.rider %>
+          <%= link_to edit_trip_url(trip), class: "btn btn-block btn-sm btn-outline-secondary" do %>
+            <i class="fas fa-edit"></i>
+          <% end %>
         <% end %>
       </div>
       <!-- Edit link trip end -->
 
       <!-- Delete link trip start -->
       <div class="col">
-        <%= link_to trip, method: :delete, data: { confirm: "Do you really want to delete this trip?" }, class: "btn btn-block btn-outline-secondary" do %>
-          <i class="fas fa-trash-alt"></i>
+        <% if current_rider == @trip.rider %>
+          <%= link_to trip, method: :delete, data: { confirm: "Do you really want to delete this trip?" }, class: "btn btn-block btn-outline-secondary" do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
         <% end %>
       </div>
       <!-- Delete link trip end -->

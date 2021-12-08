@@ -1,4 +1,6 @@
 class TripsController < ApplicationController
+  before_action :current_rider_must_be_trip_rider, only: [:edit, :update, :destroy] 
+
   before_action :set_trip, only: [:show, :edit, :update, :destroy]
 
   # GET /trips
@@ -57,6 +59,14 @@ class TripsController < ApplicationController
 
 
   private
+
+  def current_rider_must_be_trip_rider
+    set_trip
+    unless current_rider == @trip.rider
+      redirect_back fallback_location: root_path, alert: "You are not authorized for that."
+    end
+  end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_trip
       @trip = Trip.find(params[:id])

@@ -13,7 +13,7 @@ class Api::V1::RidersController < Api::V1::GraphitiController
     rider = RiderResource.build(params)
 
     if rider.save
-      render jsonapi: rider, status: 201
+      render jsonapi: rider, status: :created
     else
       render jsonapi_errors: rider
     end
@@ -33,7 +33,7 @@ class Api::V1::RidersController < Api::V1::GraphitiController
     rider = RiderResource.find(params)
 
     if rider.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: rider
     end

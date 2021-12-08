@@ -15,5 +15,4 @@ class LocationResource < ApplicationResource
              foreign_key: :dropoff_location_id
 
   # Indirect associations
-
 end

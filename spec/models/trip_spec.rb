@@ -1,22 +1,17 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Trip, type: :model do
-  
-    describe "Direct Associations" do
-
+  describe "Direct Associations" do
     it { should belong_to(:pickup_location) }
 
     it { should belong_to(:dropoff_location) }
 
     it { should belong_to(:rider) }
+  end
 
-    end
+  describe "InDirect Associations" do
+  end
 
-    describe "InDirect Associations" do
-
-    end
-
-    describe "Validations" do
-
-    end
+  describe "Validations" do
+  end
 end

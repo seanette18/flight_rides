@@ -10,8 +10,7 @@ class RiderResource < ApplicationResource
 
   # Direct associations
 
-  has_many   :trips
+  has_many :trips
 
   # Indirect associations
-
 end

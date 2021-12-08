@@ -20,5 +20,4 @@ class TripResource < ApplicationResource
   belongs_to :rider
 
   # Indirect associations
-
 end

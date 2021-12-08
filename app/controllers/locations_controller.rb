@@ -1,10 +1,11 @@
 class LocationsController < ApplicationController
-  before_action :set_location, only: [:show, :edit, :update, :destroy]
+  before_action :set_location, only: %i[show edit update destroy]
 
   # GET /locations
   def index
     @q = Location.ransack(params[:q])
-    @locations = @q.result(:distinct => true).includes(:trips, :pickups).page(params[:page]).per(10)
+    @locations = @q.result(distinct: true).includes(:trips,
+                                                    :pickups).page(params[:page]).per(10)
   end
 
   # GET /locations/1
@@ -18,15 +19,14 @@ class LocationsController < ApplicationController
   end
 
   # GET /locations/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /locations
   def create
     @location = Location.new(location_params)
 
     if @location.save
-      redirect_to @location, notice: 'Location was successfully created.'
+      redirect_to @location, notice: "Location was successfully created."
     else
       render :new
     end
@@ -35,7 +35,7 @@ class LocationsController < ApplicationController
   # PATCH/PUT /locations/1
   def update
     if @location.update(location_params)
-      redirect_to @location, notice: 'Location was successfully updated.'
+      redirect_to @location, notice: "Location was successfully updated."
     else
       render :edit
     end
@@ -44,17 +44,18 @@ class LocationsController < ApplicationController
   # DELETE /locations/1
   def destroy
     @location.destroy
-    redirect_to locations_url, notice: 'Location was successfully destroyed.'
+    redirect_to locations_url, notice: "Location was successfully destroyed."
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_location
-      @location = Location.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def location_params
-      params.require(:location).permit(:name_of_location, :address)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_location
+    @location = Location.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def location_params
+    params.require(:location).permit(:name_of_location, :address)
+  end
 end

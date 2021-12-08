@@ -1,10 +1,9 @@
 class Rider < ApplicationRecord
-  
   include JwtToken
-# Direct associations
+  # Direct associations
 
   has_many   :trips,
-             :dependent => :destroy
+             dependent: :destroy
 
   # Indirect associations
 

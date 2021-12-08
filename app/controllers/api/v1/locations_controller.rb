@@ -13,7 +13,7 @@ class Api::V1::LocationsController < Api::V1::GraphitiController
     location = LocationResource.build(params)
 
     if location.save
-      render jsonapi: location, status: 201
+      render jsonapi: location, status: :created
     else
       render jsonapi_errors: location
     end
@@ -33,7 +33,7 @@ class Api::V1::LocationsController < Api::V1::GraphitiController
     location = LocationResource.find(params)
 
     if location.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: location
     end

@@ -3,7 +3,7 @@ class RidersController < ApplicationController
 
   # GET /riders
   def index
-    @riders = Rider.all
+    @riders = Rider.page(params[:page]).per(10)
   end
 
   # GET /riders/1

@@ -3,7 +3,7 @@ class LocationsController < ApplicationController
 
   # GET /locations
   def index
-    @locations = Location.all
+    @locations = Location.page(params[:page]).per(10)
   end
 
   # GET /locations/1

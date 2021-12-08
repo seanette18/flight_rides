@@ -2,30 +2,9 @@
 
 <%= form_with(model: trip, local: true, novalidate: true, class: "mb-3") do |f| %>
   <!-- Label and input for rider_id start -->
-  <div class="form-group">
-    <% rider_class = "form-control" %>
-    <% rider_was_invalid = trip.errors.include?(:rider) %>
-
-    <% if was_validated %>
-      <% if rider_was_invalid %>
-        <% rider_class << " is-invalid" %>
-      <% else %>
-        <% rider_class << " is-valid" %>
-      <% end %>
-    <% end %>
-
-    <%= f.label :rider_id %>
-    <!-- Input for rider_id start -->
-    <%= f.collection_select :rider_id, Rider.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for rider_id end -->
-    <% if rider_was_invalid %>
-      <% trip.errors.full_messages_for(:rider).each do |message| %>
-        <div class="invalid-feedback d-flex">
-          <%= message %>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
+  <!-- Input for "rider_id" start -->
+  <%= f.hidden_field :rider_id, value: current_rider.id %>
+  <!-- Input for "rider_id" end -->
   <!-- Label and input for rider_id end -->
   <!-- Label and input for dropoff_location_id start -->
   <div class="form-group">

@@ -1,0 +1,83 @@
+<% was_validated = rider.errors.any? %>
+
+<%= form_with(model: rider, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for best_method_of_contact start -->
+  <div class="form-group">
+    <% best_method_of_contact_class = "form-control" %>
+    <% best_method_of_contact_was_invalid = rider.errors.include?(:best_method_of_contact) %>
+
+    <% if was_validated %>
+      <% if best_method_of_contact_was_invalid %>
+        <% best_method_of_contact_class << " is-invalid" %>
+      <% else %>
+        <% best_method_of_contact_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :best_method_of_contact %>
+    <!-- Input for best_method_of_contact start -->
+    <%= f.text_field :best_method_of_contact, class: best_method_of_contact_class, placeholder: "Enter best method of contact" %>
+    <!-- Input for best_method_of_contact end -->
+    <% if best_method_of_contact_was_invalid %>
+      <% rider.errors.full_messages_for(:best_method_of_contact).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for best_method_of_contact end -->
+  <!-- Label and input for name start -->
+  <div class="form-group">
+    <% name_class = "form-control" %>
+    <% name_was_invalid = rider.errors.include?(:name) %>
+
+    <% if was_validated %>
+      <% if name_was_invalid %>
+        <% name_class << " is-invalid" %>
+      <% else %>
+        <% name_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :name %>
+    <!-- Input for name start -->
+    <%= f.text_field :name, class: name_class, placeholder: "Enter name" %>
+    <!-- Input for name end -->
+    <% if name_was_invalid %>
+      <% rider.errors.full_messages_for(:name).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for name end -->
+  <!-- Label and input for username start -->
+  <div class="form-group">
+    <% username_class = "form-control" %>
+    <% username_was_invalid = rider.errors.include?(:username) %>
+
+    <% if was_validated %>
+      <% if username_was_invalid %>
+        <% username_class << " is-invalid" %>
+      <% else %>
+        <% username_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :username %>
+    <!-- Input for username start -->
+    <%= f.text_field :username, class: username_class, placeholder: "Enter username" %>
+    <!-- Input for username end -->
+    <% if username_was_invalid %>
+      <% rider.errors.full_messages_for(:username).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for username end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>

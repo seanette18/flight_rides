@@ -1,6 +1,10 @@
 class Location < ApplicationRecord
   # Direct associations
 
+  has_many   :trips,
+             :foreign_key => "dropoff_location_id",
+             :dependent => :nullify
+
   # Indirect associations
 
   # Validations

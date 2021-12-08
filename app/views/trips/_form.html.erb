@@ -1,0 +1,161 @@
+<% was_validated = trip.errors.any? %>
+
+<%= form_with(model: trip, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for rider_id start -->
+  <div class="form-group">
+    <% rider_class = "form-control" %>
+    <% rider_was_invalid = trip.errors.include?(:rider) %>
+
+    <% if was_validated %>
+      <% if rider_was_invalid %>
+        <% rider_class << " is-invalid" %>
+      <% else %>
+        <% rider_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :rider_id %>
+    <!-- Input for rider_id start -->
+    <%= f.number_field :rider_id, class: rider_class, placeholder: "Enter rider" %>
+    <!-- Input for rider_id end -->
+    <% if rider_was_invalid %>
+      <% trip.errors.full_messages_for(:rider).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for rider_id end -->
+  <!-- Label and input for dropoff_location_id start -->
+  <div class="form-group">
+    <% dropoff_location_class = "form-control" %>
+    <% dropoff_location_was_invalid = trip.errors.include?(:dropoff_location) %>
+
+    <% if was_validated %>
+      <% if dropoff_location_was_invalid %>
+        <% dropoff_location_class << " is-invalid" %>
+      <% else %>
+        <% dropoff_location_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :dropoff_location_id %>
+    <!-- Input for dropoff_location_id start -->
+    <%= f.number_field :dropoff_location_id, class: dropoff_location_class, placeholder: "Enter dropoff location" %>
+    <!-- Input for dropoff_location_id end -->
+    <% if dropoff_location_was_invalid %>
+      <% trip.errors.full_messages_for(:dropoff_location).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for dropoff_location_id end -->
+  <!-- Label and input for pickup_location_id start -->
+  <div class="form-group">
+    <% pickup_location_class = "form-control" %>
+    <% pickup_location_was_invalid = trip.errors.include?(:pickup_location) %>
+
+    <% if was_validated %>
+      <% if pickup_location_was_invalid %>
+        <% pickup_location_class << " is-invalid" %>
+      <% else %>
+        <% pickup_location_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :pickup_location_id %>
+    <!-- Input for pickup_location_id start -->
+    <%= f.number_field :pickup_location_id, class: pickup_location_class, placeholder: "Enter pickup location" %>
+    <!-- Input for pickup_location_id end -->
+    <% if pickup_location_was_invalid %>
+      <% trip.errors.full_messages_for(:pickup_location).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for pickup_location_id end -->
+  <!-- Label and input for desired_departure_time start -->
+  <div class="form-group">
+    <% desired_departure_time_class = "form-control" %>
+    <% desired_departure_time_was_invalid = trip.errors.include?(:desired_departure_time) %>
+
+    <% if was_validated %>
+      <% if desired_departure_time_was_invalid %>
+        <% desired_departure_time_class << " is-invalid" %>
+      <% else %>
+        <% desired_departure_time_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :desired_departure_time %>
+    <!-- Input for desired_departure_time start -->
+    <%= f.datetime_select :desired_departure_time, class: desired_departure_time_class, placeholder: "Enter desired departure time" %>
+    <!-- Input for desired_departure_time end -->
+    <% if desired_departure_time_was_invalid %>
+      <% trip.errors.full_messages_for(:desired_departure_time).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for desired_departure_time end -->
+  <!-- Label and input for status start -->
+  <div class="form-group">
+    <% status_class = "form-control" %>
+    <% status_was_invalid = trip.errors.include?(:status) %>
+
+    <% if was_validated %>
+      <% if status_was_invalid %>
+        <% status_class << " is-invalid" %>
+      <% else %>
+        <% status_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :status %>
+    <!-- Input for status start -->
+    <%= f.number_field :status, class: status_class, placeholder: "Enter status" %>
+    <!-- Input for status end -->
+    <% if status_was_invalid %>
+      <% trip.errors.full_messages_for(:status).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for status end -->
+  <!-- Label and input for trip_details start -->
+  <div class="form-group">
+    <% trip_detail_class = "form-control" %>
+    <% trip_detail_was_invalid = trip.errors.include?(:trip_detail) %>
+
+    <% if was_validated %>
+      <% if trip_detail_was_invalid %>
+        <% trip_detail_class << " is-invalid" %>
+      <% else %>
+        <% trip_detail_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :trip_details %>
+    <!-- Input for trip_details start -->
+    <%= f.text_field :trip_details, class: trip_detail_class, placeholder: "Enter trip detail" %>
+    <!-- Input for trip_details end -->
+    <% if trip_detail_was_invalid %>
+      <% trip.errors.full_messages_for(:trip_detail).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for trip_details end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>

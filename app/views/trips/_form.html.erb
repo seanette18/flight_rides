@@ -1,12 +1,7 @@
 <% was_validated = trip.errors.any? %>
 
 <%= form_with(model: trip, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for rider_id start -->
-  <!-- Input for "rider_id" start -->
   <%= f.hidden_field :rider_id, value: current_rider.id %>
-  <!-- Input for "rider_id" end -->
-  <!-- Label and input for rider_id end -->
-  <!-- Label and input for dropoff_location_id start -->
   <div class="form-group">
     <% dropoff_location_class = "form-control" %>
     <% dropoff_location_was_invalid = trip.errors.include?(:dropoff_location) %>
@@ -20,9 +15,7 @@
     <% end %>
 
     <%= f.label :dropoff_location_id %>
-    <!-- Input for dropoff_location_id start -->
     <%= f.collection_select :dropoff_location_id, Location.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for dropoff_location_id end -->
     <% if dropoff_location_was_invalid %>
       <% trip.errors.full_messages_for(:dropoff_location).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -31,8 +24,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for dropoff_location_id end -->
-  <!-- Label and input for pickup_location_id start -->
   <div class="form-group">
     <% pickup_location_class = "form-control" %>
     <% pickup_location_was_invalid = trip.errors.include?(:pickup_location) %>
@@ -46,9 +37,7 @@
     <% end %>
 
     <%= f.label :pickup_location_id %>
-    <!-- Input for pickup_location_id start -->
     <%= f.collection_select :pickup_location_id, Location.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for pickup_location_id end -->
     <% if pickup_location_was_invalid %>
       <% trip.errors.full_messages_for(:pickup_location).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -57,8 +46,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for pickup_location_id end -->
-  <!-- Label and input for desired_departure_time start -->
   <div class="form-group">
     <% desired_departure_time_class = "form-control" %>
     <% desired_departure_time_was_invalid = trip.errors.include?(:desired_departure_time) %>
@@ -72,9 +59,7 @@
     <% end %>
 
     <%= f.label :desired_departure_time %>
-    <!-- Input for desired_departure_time start -->
     <%= f.datetime_select :desired_departure_time, class: desired_departure_time_class, placeholder: "Enter desired departure time" %>
-    <!-- Input for desired_departure_time end -->
     <% if desired_departure_time_was_invalid %>
       <% trip.errors.full_messages_for(:desired_departure_time).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -83,8 +68,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for desired_departure_time end -->
-  <!-- Label and input for status start -->
   <div class="form-group">
     <% status_class = "form-control" %>
     <% status_was_invalid = trip.errors.include?(:status) %>
@@ -98,9 +81,7 @@
     <% end %>
 
     <%= f.label :status %>
-    <!-- Input for status start -->
     <%= f.select :status, options_for_select(Trip.statuses.keys), {}, class: "form-control" %>
-    <!-- Input for status end -->
     <% if status_was_invalid %>
       <% trip.errors.full_messages_for(:status).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -109,8 +90,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for status end -->
-  <!-- Label and input for trip_details start -->
   <div class="form-group">
     <% trip_detail_class = "form-control" %>
     <% trip_detail_was_invalid = trip.errors.include?(:trip_detail) %>
@@ -124,9 +103,7 @@
     <% end %>
 
     <%= f.label :trip_details %>
-    <!-- Input for trip_details start -->
     <%= f.text_field :trip_details, class: trip_detail_class, placeholder: "Enter trip detail" %>
-    <!-- Input for trip_details end -->
     <% if trip_detail_was_invalid %>
       <% trip.errors.full_messages_for(:trip_detail).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -135,6 +112,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for trip_details end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

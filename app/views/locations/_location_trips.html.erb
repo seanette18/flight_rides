@@ -10,26 +10,20 @@
   <ul class="list-group list-group-flush">
     <% @location.trips.each do |trip| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
-        <!-- Show link start -->
         <%= link_to trip, trip %>
-        <!-- Show link end -->
 
-        <!-- Delete link start -->
         <% if current_rider == trip.rider %>
           <%= link_to trip, method: :delete do %>
             <i class="fas fa-trash-alt"></i>
           <% end %>
         <% end %>
-        <!-- Delete link end -->
 
       </li>
     <% end %>
 
     <div class="card-footer">
       <div class="collapse" id="location_trips_new_form">
-        <!-- New associationcollection form start -->
         <%= render partial: "locations/location_trips_new_form" %>
-        <!-- New associationcollection form end -->
       </div>
     </div>
 

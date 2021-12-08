@@ -1,57 +1,31 @@
-<!-- Form trip start -->
 <%= form_with(model: @trip, local: true) do |f| %>
-<!-- Form trip end -->
 
-  <!-- Label and input for rider_id start -->
-  <!-- Input for "rider_id" start -->
   <%= f.hidden_field :rider_id, value: current_rider.id %>
-  <!-- Input for "rider_id" end -->
-  <!-- Label and input for rider_id end -->
 
-  <!-- Label and input for dropoff_location_id start -->
-  <!-- Input for dropoff_location_id start -->
   <%= f.hidden_field :dropoff_location_id, value: @location.id %>
-  <!-- Input for dropoff_location_id end -->
-  <!-- Label and input for dropoff_location_id end -->
 
-  <!-- Label and input for pickup_location_id start -->
   <div class="form-group">
     <%= f.label :pickup_location_id %>
 
-    <!-- Input for pickup_location_id start -->
     <%= f.text_field :pickup_location_id, class: "form-control" %>
-    <!-- Input for pickup_location_id end -->
   </div>
-  <!-- Label and input for pickup_location_id end -->
 
-  <!-- Label and input for desired_departure_time start -->
   <div class="form-group">
     <%= f.label :desired_departure_time %>
-    <!-- Input for desired_departure_time start -->
     <%= f.datetime_select :desired_departure_time, class: "form-control" %>
-    <!-- Input for desired_departure_time end -->
   </div>
-  <!-- Label and input for desired_departure_time end -->
 
-  <!-- Label and input for status start -->
   <div class="form-group">
     <%= f.label :status %>
 
-    <!-- Input for status start -->
     <%= f.select :status, options_for_select(Trip.statuses.keys), {}, class: "form-control" %>
-    <!-- Input for status end -->
   </div>
-  <!-- Label and input for status end -->
 
-  <!-- Label and input for trip_details start -->
   <div class="form-group">
     <%= f.label :trip_details %>
 
-    <!-- Input for trip_details start -->
     <%= f.text_field :trip_details, class: "form-control" %>
-    <!-- Input for trip_details end -->
   </div>
-  <!-- Label and input for trip_details end -->
 
   <%= f.submit "Create trip", class: "btn btn-block btn-outline-secondary" %>
 <% end %>

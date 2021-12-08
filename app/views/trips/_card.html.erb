@@ -6,46 +6,34 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Rider</dt>
-      <!-- Display rider_id start -->
       <dd>
         <% if @trip.rider.present? %>
           <%= link_to trip.rider, trip.rider %>
         <% end %>
       </dd>
-      <!-- Display rider_id end -->
 
       <dt>Dropoff location</dt>
-      <!-- Display dropoff_location_id start -->
       <dd>
         <% if @trip.dropoff_location.present? %>
           <%= link_to trip.dropoff_location, trip.dropoff_location %>
         <% end %>
       </dd>
-      <!-- Display dropoff_location_id end -->
 
       <dt>Pickup location</dt>
-      <!-- Display pickup_location_id start -->
       <dd>
         <% if @trip.pickup_location.present? %>
           <%= link_to trip.pickup_location, trip.pickup_location %>
         <% end %>
       </dd>
-      <!-- Display pickup_location_id end -->
 
       <dt>Desired departure time</dt>
-      <!-- Display desired_departure_time start -->
       <dd><%= trip.desired_departure_time %></dd>
-      <!-- Display desired_departure_time end -->
 
       <dt>Status</dt>
-      <!-- Display status start -->
       <dd><%= trip.status %></dd>
-      <!-- Display status end -->
 
       <dt>Trip details</dt>
-      <!-- Display trip_details start -->
       <dd><%= trip.trip_details %></dd>
-      <!-- Display trip_details end -->
 
     </dl>
 
@@ -54,7 +42,6 @@
         <%= link_to_show_or_back trip, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link trip start -->
       <div class="col">
         <% if current_rider == @trip.rider %>
           <%= link_to edit_trip_url(trip), class: "btn btn-block btn-sm btn-outline-secondary" do %>
@@ -62,9 +49,7 @@
           <% end %>
         <% end %>
       </div>
-      <!-- Edit link trip end -->
 
-      <!-- Delete link trip start -->
       <div class="col">
         <% if current_rider == @trip.rider %>
           <%= link_to trip, method: :delete, data: { confirm: "Do you really want to delete this trip?" }, class: "btn btn-block btn-outline-secondary" do %>
@@ -72,7 +57,6 @@
           <% end %>
         <% end %>
       </div>
-      <!-- Delete link trip end -->
     </div>
   </div>
 

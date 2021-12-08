@@ -3,7 +3,8 @@ class LocationsController < ApplicationController
 
   # GET /locations
   def index
-    @locations = Location.page(params[:page]).per(10)
+    @q = Location.ransack(params[:q])
+    @locations = @q.result(:distinct => true).includes(:trips, :pickups).page(params[:page]).per(10)
   end
 
   # GET /locations/1

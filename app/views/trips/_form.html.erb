@@ -68,7 +68,7 @@
 
     <%= f.label :pickup_location_id %>
     <!-- Input for pickup_location_id start -->
-    <%= f.number_field :pickup_location_id, class: pickup_location_class, placeholder: "Enter pickup location" %>
+    <%= f.collection_select :pickup_location_id, Location.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for pickup_location_id end -->
     <% if pickup_location_was_invalid %>
       <% trip.errors.full_messages_for(:pickup_location).each do |message| %>

@@ -3,6 +3,9 @@ class Trip < ApplicationRecord
 
   # Direct associations
 
+  belongs_to :pickup_location,
+             :class_name => "Location"
+
   belongs_to :dropoff_location,
              :class_name => "Location"
 
